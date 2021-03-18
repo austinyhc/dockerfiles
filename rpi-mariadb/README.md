@@ -10,7 +10,7 @@ The intent is also to maintain high compatibility with MySQL, ensuring a library
 ```bash
 docker run --name some-mariadb -v $(pwd)/mariadb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d tobi312/rpi-mariadb:TAG
 ```
-Please see official MariaDB images for more details.
+Please see official [MariaDB](https://hub.docker.com/_/mariadb) images for more details.
 
 #### Docker-Compose
 
