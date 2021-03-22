@@ -69,7 +69,8 @@ Manifests:
 Default startup:
 
 ```sh
-$ docker run -it --rm --name=db jbergstroem/mariadb-alpine
+$ docker run -it --rm --name=db \
+		austinyhc/alpine-mariadb-py
 ```
 
 If you would like to skip InnoDB (read: faster), this is for you:
@@ -107,3 +108,52 @@ $ docker run -it --rm --name=db \
          -v db:/var/lib/mysql \
          austinyhc/alpine-mariadb-py
 ```
+
+### Customization
+
+You can override default behavior by passing environment variables. All flags are unset unless provided.
+
+- **MYSQL_DATABASE**: create a database as provided by input
+- **MYSQL_CHARSET**: set charset for said database
+- **MYSQL_COLLATION**: set default collation for said database
+- **MYSQL_USER**: create a user with owner permissions over said database
+- **MYSQL_PASSWORD**: change password of the provided user (not root)
+- **MYSQL_ROOT_PASSWORD**: set a root password
+- **SKIP_INNODB**: skip using InnoDB which shaves off both time and disk allocation size. If you mount a persistent volume this setting will be remembered.
+
+### Adding your custom config
+
+You can add your custom `my.cnf` with various settings (be it for production or tuning InnoDB). Note: this will bypass `SKIP_INNODB` since it is injected into the default config on launch.
+
+```sh
+$ docker run -it --rm --name=db \
+         -v $(pwd)/config/my.cnf:/etc/my.cnf.d/my.cnf \
+         austinyhc/alpine-mariadb-py
+```
+
+### Adding custom sql on init
+
+When a database is empty, the `mysql_install_db` script will be invoked. As part of this, you can pass custom input via the commonly used `/docker-entrypoint-initdb.d` convention. This will not be run when an existing database is found.
+
+```sh
+$ mkdir init && echo "create database mydatabase;" > init/mydatabase.sql
+$ echo "#\!/bin/sh\necho Hello from script" > init/custom.sh
+$ docker volume create db
+db
+$ docker run -it --rm -e SKIP_INNODB=1 -v db:/var/lib/mysql -v $(pwd)/init:/docker-entrypoint-initdb.d jbergstroem/mariadb-alpine:latest
+init: installing mysql client
+init: updating system tables
+init: executing /docker-entrypoint-initdb.d/custom.sh
+Hello from script
+init: adding /docker-entrypoint-initdb.d/mydatabase.sql
+init: removing mysql client
+2020-06-21  5:28:02 0 [Note] /usr/bin/mysqld (mysqld 10.4.13-MariaDB) starting as process 1 ...
+2020-06-21  5:28:03 0 [Note] Plugin 'InnoDB' is disabled.
+2020-06-21  5:28:03 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-06-21  5:28:03 0 [Note] Server socket created on IP: '::'.
+2020-06-21  5:28:03 0 [Note] Reading of all Master_info entries succeeded
+2020-06-21  5:28:03 0 [Note] Added new Master_info '' to hash table
+2020-06-21  5:28:03 0 [Note] /usr/bin/mysqld: ready for connections.
+Version: '10.4.13-MariaDB'  socket: '/run/mysqld/mysqld.sock'
+```
+
