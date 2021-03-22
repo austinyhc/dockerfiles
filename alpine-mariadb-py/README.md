@@ -1,22 +1,16 @@
 # A tiny Alpine+MariaDB+Python image
 
----
-
 The goal of this project is to achieve a high quality, bite-sized, fast startup docker image for [MariaDB](https://mariadb.org/). It is built on the excellent, container-friendly Linux distribution [Alpine Linux](https://alpinelinux.org/).
 
 Licensed under [MIT](https://github.com/jbergstroem/mariadb-alpine/blob/master/LICENSE).
 
 ## Features
 
----
-
 - Reduce default settings for InnoDB: production deployments should have their own `my.cnf`
 - Simple and fast shutdown: Both `CTRL+C` in interactive mode and `docker stop` does the job.
 - Permissive ACL: Aminimal no-flags startup "just works"; convenient for developement
 
 ## Multi-Arch Build
-
----
 
 Create a new builder called `testbuilder`
 
@@ -71,8 +65,6 @@ Manifests:
 ```
 
 ## Usage
-
----
 
 Default startup:
 
