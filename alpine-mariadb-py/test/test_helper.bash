@@ -21,7 +21,7 @@ client_query() {
   # $1: name of container
   # $2: query to run
   ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${TEST_PREFIX}-${1}")
-  eval docker run --rm jbergstroem/mariadb-client-alpine:latest -h "${ip}" "${2}"
+  eval docker run --rm "${IMAGE}":"${VERSION}" -h "${ip}" "${2}"
 }
 
 # for local testing cleaning up makes sense
