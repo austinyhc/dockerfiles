@@ -1,4 +1,4 @@
-FROM austinyhc/alpine-mariadb-py
+FROM austinyhc/alpine-mariadb-py:c34e9c1
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
@@ -6,12 +6,11 @@ RUN apk add --no-cache --virtual .build-deps gcc libc-dev make \
     && pip install --no-cache-dir "uvicorn[standard]" gunicorn fastapi \
     && apk del .build-deps gcc libc-dev make
 
-COPY ./start.sh /start.sh
+COPY sh/start.sh /start.sh
+COPY gunicorn_conf.py /gunicorn_conf.py
+COPY sh/start-reload.sh /start-reload.sh
+
 RUN chmod +x /start.sh
-
-COPY ./gunicorn_conf.py /gunicorn_conf.py
-
-COPY ./start-reload.sh /start-reload.sh
 RUN chmod +x /start-reload.sh
 
 ENV PYTHONPATH=/app
