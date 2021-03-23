@@ -140,7 +140,7 @@ $ mkdir init && echo "create database mydatabase;" > init/mydatabase.sql
 $ echo "#\!/bin/sh\necho Hello from script" > init/custom.sh
 $ docker volume create db
 db
-$ docker run -it --rm -e SKIP_INNODB=1 -v db:/var/lib/mysql -v $(pwd)/init:/docker-entrypoint-initdb.d jbergstroem/mariadb-alpine:latest
+$ docker run -it --rm -e SKIP_INNODB=1 -v db:/var/lib/mysql -v $(pwd)/init:/docker-entrypoint-initdb.d austinyhc/alpine-mariadb-py
 init: installing mysql client
 init: updating system tables
 init: executing /docker-entrypoint-initdb.d/custom.sh
