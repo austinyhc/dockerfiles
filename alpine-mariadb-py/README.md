@@ -34,7 +34,10 @@ $ docker buildx inspect --bootstrap
 Build ARM-based Docker images
 
 ```sh
-$ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t austinyhc/alpine-mariadb-py --push .
+$ docker buildx build \
+	--platform linux/amd64,linux/arm64,linux/arm/v7 \
+	-t austinyhc/alpine-mariadb-py \
+	--push .
 ```
 
 Awesome. The `--platform` flag enabled buildx to generate Linux images for Intel 64-bit, arm 32-bit and arm 64-bit arch. The `--push` option generates a multi-arch manifest and pushes all the images all the images to Docker Hub. Cool, isn't it?
@@ -155,5 +158,28 @@ init: removing mysql client
 2020-06-21  5:28:03 0 [Note] Added new Master_info '' to hash table
 2020-06-21  5:28:03 0 [Note] /usr/bin/mysqld: ready for connections.
 Version: '10.4.13-MariaDB'  socket: '/run/mysqld/mysqld.sock'
+```
+
+## Test
+
+This container image is tested with [`bats`](https://github.com/bats-core/bats-core) - a bash testing framework. Please find the [installation]([Install · bats-core/bats-core Wiki (github.com)](https://github.com/bats-core/bats-core/wiki/Install)) helpful. To test:
+
+```sh
+$ sh/build-image.sh
+$ sh/run-tests.bash
+ ✓ should output mysqld version
+ ✓ start a default server with InnoDB and no password
+ ✓ start a server without a dedicated volume (issue #1)
+ ✓ start a server without InnoDB
+ ✓ start a server with a custom root password
+ ✓ start a server with a custom database
+ ✓ start a server with a custom database, user and password
+ ✓ verify that binary logging is turned off
+ ✓ should allow a user to pass a custom config
+ ✓ should import a .sql file and execute it
+ ✓ should import a compressed file and execute it
+ ✓ should execute an imported shell script
+
+12 tests, 0 failures
 ```
 

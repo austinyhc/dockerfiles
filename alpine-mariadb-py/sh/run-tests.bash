@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export IMAGE=${IMAGE:-jbergstroem/mariadb-alpine}
+export IMAGE=${IMAGE:-austinyhc/alpine-mariadb-py}
 export VERSION=${VERSION:-latest}
-export TEST_PREFIX="mariadb-alpine-bats-test"
+export TEST_PREFIX="alpine-mariadb-py-bats-test"
 
 DEFAULT_TMPDIR=${TMPDIR:-/tmp}
 
