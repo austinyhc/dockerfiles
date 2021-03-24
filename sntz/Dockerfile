@@ -2,9 +2,26 @@ FROM austinyhc/alpine-mariadb-py:c34e9c1
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
-RUN apk add --no-cache --virtual .build-deps gcc libc-dev make \
-    && pip install --no-cache-dir "uvicorn[standard]" gunicorn fastapi \
-    && apk del .build-deps gcc libc-dev make
+# https://bit.ly/3snLIvi
+# https://bit.ly/3lLIZJh
+RUN apk add --no-cache mariadb-connector-c-dev && \
+	apk add --no-cache --virtual .build-deps \
+		gcc \
+		build-base \
+		libc-dev \
+		make \
+		mysqlclient \
+		&& \
+    pip install --no-cache-dir \
+        fastapi \
+        uvicorn[standard] \
+        gunicorn \
+        sqlalchemy \
+        pymysql \
+        mysqlclient \
+        "pydantic>=1.2.0,<2.0.0" \
+		&& \
+    apk del .build-deps gcc build-base libc-dev make
 
 COPY sh/start.sh /start.sh
 COPY gunicorn_conf.py /gunicorn_conf.py
