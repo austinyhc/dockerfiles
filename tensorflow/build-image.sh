@@ -3,7 +3,7 @@
 IMAGE=${IMAGE:-austinyhc/tensorflow}
 SHORT_SHA=$(git rev-parse --short HEAD)
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-VERSION=${VERSION:-latest}
+VERSION=${VERSION:-${SHORT_SHA}}
 
 docker buildx create --name mbuilder
 docker buildx use mbuilder
