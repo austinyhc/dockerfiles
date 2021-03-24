@@ -1,4 +1,4 @@
-# A tiny Alpine+MariaDB+Python image
+# A tiny [Alpine + MariaDB + Python] image
 
 The goal of this project is to achieve a high quality, bite-sized, fast startup docker image for [MariaDB](https://mariadb.org/). It is built on the excellent, container-friendly Linux distribution [Alpine Linux](https://alpinelinux.org/).
 
