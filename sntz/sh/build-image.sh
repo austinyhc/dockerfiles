@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=${IMAGE:-austinyhc/alpine-mariadb-py-fastapi}
+IMAGE=${IMAGE:-austinyhc/sntz}
 SHORT_SHA=$(git rev-parse --short HEAD)
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 VERSION=${VERSION:-${SHORT_SHA}}
