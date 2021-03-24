@@ -1,19 +1,16 @@
 FROM python:3.9.2-alpine3.12
+FROM python:3.9.2-alpine3.12
 
 ARG BUILD_DATE
 ARG VCS_REF
-LABEL maintainer="Austin Chen <austin.yhc@gmail.com>" \
-      mariadb-version="10.4.15" \
-      alpine-version="3.12.0" \
-      build="Mar-19-2021" \
+LABEL org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.title="alpine-mariadb-py" \
       org.opencontainers.image.description="Linux Alpine + MariaDB + Python" \
       org.opencontainers.image.authors="Austin Chen <austin.yhc@gmail.com>" \
-      org.opencontainers.image.vendor="Lumina Systems" \
+      org.opencontainers.image.revision=$VCS_REF \
       org.opencontainers.image.source="https://github.com/austinyhc/dockerfiles" \
       org.opencontainers.image.url="https://github.com/austinyhc/dockerfiles" \
-      org.opencontainers.image.revision=$VCS_REF \
-      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.schema-version="1.0.0-rc.1" \
       org.opencontainers.image.license="MIT"
 
 COPY sh/clean.sh /clean.sh
