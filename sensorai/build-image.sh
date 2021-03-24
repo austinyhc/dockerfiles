@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=${IMAGE:-austinyhc/tensorflow}
+IMAGE=${IMAGE:-austinyhc/sensorai}
 SHORT_SHA=$(git rev-parse --short HEAD)
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 VERSION=${VERSION:-${SHORT_SHA}}
