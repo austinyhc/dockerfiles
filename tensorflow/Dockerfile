@@ -5,4 +5,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     $PIP_INSTALL \
         jupyterlab \
         jupyterlab_vim \
-        watchdog
+        watchdog \
+        pyyaml \
+        argh
