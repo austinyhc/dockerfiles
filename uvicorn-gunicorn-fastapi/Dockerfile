@@ -1,16 +1,6 @@
 FROM python:3.9.2-alpine3.12
 
-ARG BUILD_DATE
-ARG VCS_REF
-LABEL org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.title="uvicorn-gunicorn-fastapi" \
-      org.opencontainers.image.description="Uvicorn managed by Gunicorn for high-performance FastAPI web app" \
-      org.opencontainers.image.authors="Austin Chen <austin.yhc@gmail.com>" \
-      org.opencontainers.image.revision=$VCS_REF \
-      org.opencontainers.image.source="https://github.com/austinyhc/dockerfiles" \
-      org.opencontainers.image.url="https://github.com/austinyhc/dockerfiles" \
-      org.opencontainers.image.schema-version="1.0.0-rc.1" \
-      org.opencontainers.image.license="MIT"
+LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
 # https://bit.ly/3snLIvi
 # https://bit.ly/3lLIZJh
