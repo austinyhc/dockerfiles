@@ -5,7 +5,7 @@ services:
     #build:
     #  context: ./
     #  dockerfile: alpine.armhf.10_4.Dockerfile
-    image: austinyhc/alpine-mariadb-py:armv7
+    image: austinyhc/alpine-mariadb:armv7
     #container_name: mariadb
     restart: unless-stopped
     volumes:
