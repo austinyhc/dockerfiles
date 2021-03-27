@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE=${IMAGE:-austinyhc/sntz}
+IMAGE=${IMAGE:-austinyhc/gunicorn-fastapi}
 SHORT_SHA=$(git rev-parse --short HEAD)
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 VERSION=${VERSION:-${SHORT_SHA}}

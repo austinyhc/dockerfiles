@@ -1,11 +1,10 @@
-FROM python:3.9.2-alpine3.12
-FROM python:3.9.2-alpine3.12
+FROM alpine:3.12
 
 ARG BUILD_DATE
 ARG VCS_REF
 LABEL org.opencontainers.image.created=$BUILD_DATE \
-      org.opencontainers.image.title="alpine-mariadb-py" \
-      org.opencontainers.image.description="Linux Alpine + MariaDB + Python" \
+      org.opencontainers.image.title="alpine-mariadb" \
+      org.opencontainers.image.description="A light-weighted MariaDB on Alpine" \
       org.opencontainers.image.authors="Austin Chen <austin.yhc@gmail.com>" \
       org.opencontainers.image.revision=$VCS_REF \
       org.opencontainers.image.source="https://github.com/austinyhc/dockerfiles" \
