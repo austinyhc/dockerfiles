@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export IMAGE=${IMAGE:-austinyhc/uvicorn-gunicorn-fastapi}
+export IMAGE=${IMAGE:-austinyhc/gunicorn-fastapi}
 export VERSION=${VERSION:-latest}
-export TEST_PREFIX="uvicorn-gunicorn-fastapi-bats-test"
+export TEST_PREFIX="gunicorn-fastapi-bats-test"
 
 DEFAULT_TMPDIR=${TMPDIR:-/tmp}
 
