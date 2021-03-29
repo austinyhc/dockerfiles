@@ -1,4 +1,4 @@
-# Docker image for uvicorn-gunicorn-fastapi
+# Docker Image for gunicorn-fastapi
 
 The goal of this project is to create a docker image with [**Uvicorn**](https://www.uvicorn.org/) managed by [**Gunicorn**](https://gunicorn.org/) for high-performance [**FastAPI**](https://fastapi.tiangolo.com/) web applications in **[Python](https://www.python.org/) 3.9.2 with performance auto-tuning based on  [Alpine Linux](https://alpinelinux.org/).
 

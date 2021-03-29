@@ -1,4 +1,4 @@
-# A tiny [Alpine + MariaDB + Python] image
+# A  MariaDB Based on Alpine 
 
 The goal of this project is to achieve a high quality, bite-sized, fast startup docker image for [MariaDB](https://mariadb.org/). It is built on the excellent, container-friendly Linux distribution [Alpine Linux](https://alpinelinux.org/).
 
@@ -8,7 +8,7 @@ Licensed under [MIT](https://github.com/jbergstroem/mariadb-alpine/blob/master/L
 
 - Reduce default settings for InnoDB: production deployments should have their own `my.cnf`
 - Simple and fast shutdown: Both `CTRL+C` in interactive mode and `docker stop` does the job.
-- Permissive ACL: Aminimal no-flags startup "just works"; convenient for developement
+- Permissive ACL: A minimal no-flags startup "just works"; convenient for development
 
 ## Multi-Arch Build
 
@@ -25,7 +25,7 @@ $ docker buildx use testbuilder
 $ docker buildx ls
 ```
 
-The ensures that the builder is running before inspecting it. If the driver is `docker-container`, then `--bootstrap` starts the buildkit container and waits until it is operational. Bootstrapping is automatically done during build, it is thus not necessary. The same BuildKit container is used during the lifetime of the associated builder node (as displayed in `buildx ls`).
+The ensures that the builder is running before inspecting it. If the driver is `docker-container`, then `--bootstrap` starts the BuildKit container and waits until it is operational. Bootstrapping is automatically done during build, it is thus not necessary. The same BuildKit container is used during the lifetime of the associated builder node (as displayed in `buildx ls`).
 
 ```sh
 $ docker buildx inspect --bootstrap
@@ -134,7 +134,7 @@ $ docker run -it --rm --name=db \
          austinyhc/alpine-mariadb
 ```
 
-### Adding custom sql on init
+### Adding custom SQL on init
 
 When a database is empty, the `mysql_install_db` script will be invoked. As part of this, you can pass custom input via the commonly used `/docker-entrypoint-initdb.d` convention. This will not be run when an existing database is found.
 

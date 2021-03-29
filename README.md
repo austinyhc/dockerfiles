@@ -1,9 +1,2 @@
-# dockerfiles
-Useful Dockerfiles made for different purposes.
-
-In this repo, I will document all the dockerfiles I use along the way of my career path.
-
-Also I will put some Docker enthusiasts that I ran into on the Docker Hub and Github.
--  [jsurf](https://registry.hub.docker.com/u/jsurf)
--  [jessfraz](https://hub.docker.com/u/jessfraz)
--  [hypriot](https://hub.docker.com/u/hypriot)
+# Dockerfiles
+The purpose of this repository is to maintain and to store dockerfiles I found useful throughout the journey as a full-stack engineer plus data scientist. 
