@@ -28,6 +28,8 @@ RUN dpkg --configure -a && \
         matplotlib \
         scikit-learn \
         "scikit-image>=0.14.2" \
+        inflection \
+        dataset \
         && \
     apt-get autoremove -y build-essential gcc && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*

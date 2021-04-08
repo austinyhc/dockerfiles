@@ -21,6 +21,7 @@ RUN apt-get update --fix-missing && \
         pyyaml \
         ujson \
         "pydantic>=1.2.0,<2.0.0" \
+        inflection \
         && \
     apt-get autoremove -y build-essential gcc && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
