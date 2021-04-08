@@ -30,6 +30,8 @@ RUN dpkg --configure -a && \
         "scikit-image>=0.14.2" \
         inflection \
         dataset \
+        # Workaround for fastapi running on python 3.6
+        async-exit-stack async-generator \
         && \
     apt-get autoremove -y build-essential gcc && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
