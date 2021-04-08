@@ -11,6 +11,7 @@ RUN apt-get update --fix-missing && \
         libmariadb-dev-compat \
         && \
     $PIP_INSTALL \
+        pip \
         fastapi \
         uvicorn[standard] \
         gunicorn \
