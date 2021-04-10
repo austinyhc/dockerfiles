@@ -18,6 +18,7 @@ RUN PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     /bin/bash -c "source /root/.bashrc" && \
     rbenv install 2.7.1 && rbenv global 2.7.1 && \
     $PIP_INSTALL \
+        pip \
         pandas \
         matplotlib \
         nbdev \

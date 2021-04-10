@@ -1,8 +1,9 @@
-FROM python:3.9.2-slim-buster
+FROM austinyhc/sensorai:3165199
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
-RUN apt-get update --fix-missing && \
+RUN dpkg --configure -a && \
+    apt-get update --fix-missing && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
@@ -21,18 +22,15 @@ RUN apt-get update --fix-missing && \
         pyyaml \
         ujson \
         "pydantic>=1.2.0,<2.0.0" \
+        numpy \
+        pandas \
+        scipy \
+        matplotlib \
+        scikit-learn \
+        "scikit-image>=0.14.2" \
         inflection \
+        dataset \
+        # Workaround for fastapi running on python 3.6
+        async-exit-stack async-generator \
         && \
-    apt-get autoremove -y build-essential gcc && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
-
-COPY sh/start.sh /start.sh
-COPY gunicorn_conf.py /gunicorn_conf.py
-COPY sh/start-reload.sh /start-reload.sh
-RUN chmod +x /start.sh && chmod +x /start-reload.sh
-
-EXPOSE 80
-
-# Run the start script, it will check for an /app/prestart.sh script (e.g. for migrations)
-# And then will start Gunicorn with Uvicorn
-CMD ["/start.sh"]

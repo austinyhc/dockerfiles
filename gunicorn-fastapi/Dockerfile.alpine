@@ -1,16 +1,11 @@
-FROM python:3.9.2-slim-buster
+FROM python:3.9.4-alpine
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
-RUN apt-get update --fix-missing && \
-    APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
-    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-        build-essential \
-        gcc \
-        libmariadb-dev-compat \
+RUN apk add --no-cache mariadb-connector-c-dev
+RUN apk add --no-cache --virtual .build-deps gcc build-base libc-dev make \
         && \
-    $PIP_INSTALL \
+    pip install --no-cache-dir \
         pip \
         fastapi \
         uvicorn[standard] \
@@ -23,8 +18,7 @@ RUN apt-get update --fix-missing && \
         "pydantic>=1.2.0,<2.0.0" \
         inflection \
         && \
-    apt-get autoremove -y build-essential gcc && \
-    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+    apk del .build-deps gcc build-base libc-dev make
 
 COPY sh/start.sh /start.sh
 COPY gunicorn_conf.py /gunicorn_conf.py

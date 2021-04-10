@@ -226,6 +226,7 @@ RUN APT_INSTALL="apt-fast install -y --no-install-recommends" && \
 # ------------------------------------------------------------------
 
     $PIP_INSTALL \
+        pip \
         fire \
         librosa \
         nvidia-ml-py3 \
