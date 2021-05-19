@@ -9,6 +9,7 @@ RUN dpkg --configure -a && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         build-essential \
         gcc \
+        ssh \
         libmariadb-dev-compat \
         && \
     $PIP_INSTALL \
@@ -26,11 +27,13 @@ RUN dpkg --configure -a && \
         pandas \
         scipy \
         matplotlib \
+        seaborn \
         scikit-learn \
         "scikit-image>=0.14.2" \
         inflection \
         dataset \
         # Workaround for fastapi running on python 3.6
         async-exit-stack async-generator \
+        "dvc[gdrive]" \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
