@@ -1,4 +1,4 @@
-FROM python:3.9.2-slim-buster
+FROM austinyhc/sntz:66cefbe
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
