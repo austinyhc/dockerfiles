@@ -10,6 +10,7 @@ RUN dpkg --configure -a && \
         build-essential \
         gcc \
         libmariadb-dev-compat \
+        libsndfile1 \
         && \
     $PIP_INSTALL \
         pip \
@@ -32,5 +33,6 @@ RUN dpkg --configure -a && \
         dataset \
         # Workaround for fastapi running on python 3.6
         async-exit-stack async-generator \
+        librosa \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
