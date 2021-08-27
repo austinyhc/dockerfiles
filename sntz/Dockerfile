@@ -34,5 +34,6 @@ RUN dpkg --configure -a && \
         # Workaround for fastapi running on python 3.6
         async-exit-stack async-generator \
         librosa \
+        xlrd \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
