@@ -40,5 +40,6 @@ RUN dpkg --configure -a && \
         xlrd \
         patool \
         pyunpack \
+        checksumdir \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
