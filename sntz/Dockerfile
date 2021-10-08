@@ -41,5 +41,6 @@ RUN dpkg --configure -a && \
         patool \
         pyunpack \
         checksumdir \
+        openpyxl \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
