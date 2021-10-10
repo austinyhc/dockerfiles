@@ -70,5 +70,6 @@ RUN PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
         pyunpack \
         checksumdir \
         openpyxl \
+        nbdev \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
