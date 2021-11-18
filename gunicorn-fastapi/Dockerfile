@@ -1,4 +1,4 @@
-FROM austinyhc/sntz:66cefbe
+FROM austinyhc/sntz:365faad
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
@@ -22,6 +22,8 @@ RUN apt-get update --fix-missing && \
         ujson \
         "pydantic>=1.2.0,<2.0.0" \
         inflection \
+        python-Levenshtein \
+        fuzzywuzzy \
         && \
     apt-get autoremove -y build-essential gcc && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
