@@ -38,7 +38,7 @@ RUN dpkg --configure -a && \
 
 ENV PATH /root/.rbenv/bin:$PATH
 
-RUN PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
+RUN PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
     echo 'eval "$(rbenv init -)"' >> /root/.bashrc && \
     /bin/bash -c "source /root/.bashrc" && \
     rbenv install 2.7.1 && rbenv global 2.7.1 && \
