@@ -1,9 +1,10 @@
-FROM tensorflow/tensorflow:latest
+FROM ubuntu:20.04
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
 RUN dpkg --configure -a && \
     apt-get update --fix-missing && \
+    apt-get -y upgrade && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
     GIT_CLONE="git clone --recurse-submodules --depth 10 -j8" && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
@@ -21,7 +22,15 @@ RUN dpkg --configure -a && \
         vim \
         rbenv \
         libssl-dev \
+        libffi-dev \
         zlib1g-dev \
+        libcurl4-openssl-dev \
+        libsqlite3-dev \
+        pkg-config \
+        libnotify-dev \
+        onedrive \
+        python3-dev \
+        python3-pip \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
