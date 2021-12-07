@@ -28,10 +28,19 @@ RUN dpkg --configure -a && \
         libsqlite3-dev \
         pkg-config \
         libnotify-dev \
-        onedrive \
+        gnupg2 \
         python3-dev \
         python3-pip \
+        software-properties-common \
         && \
+    apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 886DDD89 && \
+    add-apt-repository 'deb https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/ ./' && \
+    apt-get update --fix-missing && \
+    wget https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/Release.key && \
+    apt-key add ./Release.key && \
+    apt-get update --fix-missing && \
+    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+        onedrive && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
     /root/.rbenv/plugins/ruby-build/install.sh
