@@ -33,17 +33,15 @@ RUN dpkg --configure -a && \
         python3-pip \
         software-properties-common \
         && \
-    apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 886DDD89 && \
-    add-apt-repository 'deb https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/ ./' && \
-    apt-get update --fix-missing && \
-    wget https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/Release.key && \
-    apt-key add ./Release.key && \
-    apt-get update --fix-missing && \
-    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-        onedrive && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
     /root/.rbenv/plugins/ruby-build/install.sh
+
+RUN /bin/bash -c "echo 'deb https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/ ./' >> /etc/apt/sources.list" && \
+    /bin/bash -c "wget https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_20.04/Release.key" && \
+    /bin/bash -c "apt-key add ./Release.key" && \
+    /bin/bash -c "apt-get update" && \
+    /bin/bash -c "apt install -y onedrive"
 
 ENV PATH /root/.rbenv/bin:$PATH
 
