@@ -32,6 +32,7 @@ RUN dpkg --configure -a && \
         python3-dev \
         python3-pip \
         software-properties-common \
+        pandoc \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
@@ -87,5 +88,6 @@ RUN PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
         checksumdir \
         openpyxl \
         nbdev \
+        nbconvert \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
