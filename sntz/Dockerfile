@@ -33,6 +33,8 @@ RUN dpkg --configure -a && \
         python3-pip \
         software-properties-common \
         pandoc \
+        texlive-xetex \
+        texlive-plain-generic \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
@@ -89,5 +91,6 @@ RUN PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
         openpyxl \
         nbdev \
         nbconvert \
+        traitlets \
         && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
