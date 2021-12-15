@@ -4,7 +4,7 @@ LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
 RUN apt-get update --fix-missing && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
+    PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         build-essential \
         gcc \
