@@ -1,4 +1,4 @@
-FROM austinyhc/sntz:365faad
+FROM austinyhc/sntz:6015d88
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
