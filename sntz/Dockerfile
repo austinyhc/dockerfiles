@@ -35,6 +35,7 @@ RUN dpkg --configure -a && \
         pandoc \
         texlive-xetex \
         texlive-plain-generic \
+        ssh \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
