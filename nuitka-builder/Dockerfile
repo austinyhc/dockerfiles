@@ -25,4 +25,7 @@ RUN powershell -Command pip install Nuitka
 RUN powershell -Command Invoke-WebRequest -Uri https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z
  -OutFile 'file.7z' -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
 RUN powershell -Command 7z x file.7z
+RUN powershell -Command mv ./mingw64 C:\Windows\System\
+RUN powershell -Command $env:Path += ";C:\Windows\System\mingw64\bin"
+
 
