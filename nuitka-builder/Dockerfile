@@ -17,6 +17,12 @@ RUN powershell -Command [System.Net.ServicePointManager]::SecurityProtocol = [Sy
 RUN powershell -Command iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 RUN RUN powershell -Command wget https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_
 v6-rev0.7z -o ./x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z
-RUN RUN powershell -Command choco install -y git
-RUN RUN powershell -Command choco install -y python --version=3.8.10
-RUN RUN powershell -Command pip install Nuitka
+RUN powershell -Command choco install -y git
+RUN powershell -Command choco install -y python --version=3.8.10
+RUN powershell -Command choco install -y 7zip.install
+RUN powershell -Command pip install Nuitka
+# https://stackoverflow.com/questions/53193831/wget-and-curl-always-result-in-corrupted-file
+RUN powershell -Command Invoke-WebRequest -Uri https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z
+ -OutFile 'file.7z' -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+RUN powershell -Command 7z x file.7z
+
