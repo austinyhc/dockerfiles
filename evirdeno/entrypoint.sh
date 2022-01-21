@@ -90,4 +90,4 @@ if [ ${#} -gt 0 ]; then
 fi
 
 echo "# Launching onedrive"
-exec gosu "${oduser}" /usr/local/bin/onedrive "${ARGS[@]}"
+exec gosu "${oduser}" /usr/bin/onedrive "${ARGS[@]}"
