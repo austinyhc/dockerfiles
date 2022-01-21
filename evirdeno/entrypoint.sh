@@ -26,7 +26,7 @@ fi
 chown "${oduser}:${odgroup}" /onedrive/ /onedrive/conf
 
 # Default parameters
-ARGS=(--monitor --confdir /onedrive/conf --syncdir /onedrive/data)
+ARGS=(--confdir /onedrive/conf --syncdir /onedrive/data)
 echo "Base Args: ${ARGS}"
 
 # Make Verbose output optional, based on an environment variable
@@ -89,5 +89,5 @@ if [ ${#} -gt 0 ]; then
   ARGS=("${@}")
 fi
 
-echo "# Launching onedrive"
-exec gosu "${oduser}" /usr/bin/onedrive "${ARGS[@]}"
+#echo "# Launching onedrive"
+#exec gosu "${oduser}" /usr/bin/onedrive "${ARGS[@]}"
