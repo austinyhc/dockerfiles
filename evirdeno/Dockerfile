@@ -36,6 +36,7 @@ RUN dpkg --configure -a && \
         texlive-xetex \
         texlive-plain-generic \
         ssh \
+        gosu \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
