@@ -53,4 +53,3 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
