@@ -2,11 +2,14 @@ FROM ubuntu:20.04
 
 LABEL maintainer="Austin Chen <austin.yhc@gmail.com>"
 
+ARG GH_TOKEN
+
 RUN dpkg --configure -a && \
     apt-get update --fix-missing && \
     apt-get -y upgrade && \
     APT_INSTALL="apt-get install -y --no-install-recommends" && \
     GIT_CLONE="git clone --recurse-submodules --depth 10 -j8" && \
+    PIP_INSTALL="python3 -m pip --no-cache-dir install --upgrade" && \
     DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         build-essential \
         make \
@@ -37,9 +40,12 @@ RUN dpkg --configure -a && \
         texlive-plain-generic \
         ssh \
         gosu \
+        && \
+    $PIP_INSTALL \
         ipykernel \
         dvc[gdrive] \
         && \
+    timeout 120 pip install --user git+https://${GH_TOKEN}@github.com/austinyhc/sntz.git@0.3.9 && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
     /root/.rbenv/plugins/ruby-build/install.sh
