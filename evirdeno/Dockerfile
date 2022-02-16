@@ -59,5 +59,5 @@ RUN /bin/bash -c "echo 'deb https://download.opensuse.org/repositories/home:/npr
 ENV PATH /root/.rbenv/bin:$PATH
 RUN rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+#COPY entrypoint.sh /entrypoint.sh
+#ENTRYPOINT ["/entrypoint.sh"]
