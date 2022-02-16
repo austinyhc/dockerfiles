@@ -37,6 +37,8 @@ RUN dpkg --configure -a && \
         texlive-plain-generic \
         ssh \
         gosu \
+        ipykernel \
+        dvc[gdrive] \
         && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
