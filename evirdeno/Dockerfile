@@ -39,6 +39,7 @@ RUN dpkg --configure -a && \
         texlive-xetex \
         texlive-plain-generic \
         ssh \
+        ssh-client \
         gosu \
         && \
     $PIP_INSTALL \
