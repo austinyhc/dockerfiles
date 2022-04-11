@@ -46,7 +46,7 @@ RUN dpkg --configure -a && \
         ipykernel \
         dvc[gdrive] \
         && \
-    timeout 120 pip install --user git+https://${GH_TOKEN}@github.com/austinyhc/sntz.git@0.3.9 && \
+    timeout 120 pip install --user git+https://${GH_TOKEN}@github.com/austinyhc/sntz.git@0.3.11 && \
     $GIT_CLONE https://github.com/sstephenson/ruby-build.git \
                 /root/.rbenv/plugins/ruby-build && \
     /root/.rbenv/plugins/ruby-build/install.sh
