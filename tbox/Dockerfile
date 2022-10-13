@@ -94,7 +94,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         && \
     $PIP_INSTALL \
         --pre torch torchvision torchaudio -f \
-        https://download.pytorch.org/whl/nightly/cu118/torch_nightly.html \
+        https://download.pytorch.org/whl/nightly/cu113/torch_nightly.html \
         && \
 # ==================================================================
 # fastai
