@@ -10,7 +10,7 @@
 # opencv        4.5.4  (git)
 # ==================================================================
 
-FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.6.2-cudnn8-devel-ubuntu20.04
 
 ENV LANG C.UTF-8
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
@@ -93,8 +93,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         typing \
         && \
     $PIP_INSTALL \
-        --pre torch torchvision torchaudio -f \
-        https://download.pytorch.org/whl/nightly/cu113/torch_nightly.html \
+        --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116 \
         && \
 # ==================================================================
 # fastai
