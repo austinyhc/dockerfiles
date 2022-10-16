@@ -154,6 +154,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         seaborn \
         torchbearer \
         watchdog \
+        kaggle \
         && \
 # ==================================================================
 # config & cleanup
