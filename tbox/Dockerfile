@@ -5,7 +5,6 @@
 # python        3.8    (apt)
 # jupyter       latest (pip)
 # pytorch       latest (pip)
-# tensorflow    latest (pip)
 # jupyterlab    latest (pip)
 # opencv        4.5.4  (git)
 # ==================================================================
@@ -35,6 +34,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         unzip \
         unrar \
         cmake \
+        sudo \
         && \
 # ==================================================================
 # darknet
@@ -102,12 +102,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         fastai \
         && \
 # ==================================================================
-# tensorflow
-# ------------------------------------------------------------------
-    $PIP_INSTALL \
-        tensorflow-gpu \
-        && \
-# ==================================================================
 # jupyterlab
 # ------------------------------------------------------------------
     $PIP_INSTALL \
@@ -154,6 +148,8 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         seaborn \
         torchbearer \
         watchdog \
+        kaggle \
+        nbdev \
         && \
 # ==================================================================
 # config & cleanup
@@ -162,3 +158,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+
+COPY kaggle /.kaggle
+RUN chmod 600 /.kaggle/kaggle.json
