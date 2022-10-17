@@ -159,6 +159,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
-COPY kaggle /.kaggle
-RUN  chmod 600 /.kaggle/kaggle.json && \
+COPY kaggle /root/.kaggle
+
+RUN  chmod 600 /root/.kaggle/kaggle.json && \
      nbdev_install_quarto
