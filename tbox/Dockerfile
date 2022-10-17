@@ -156,6 +156,10 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         watchdog \
         kaggle \
         && \
+
+COPY kaggle /.kaggle
+RUN chmod 600 /.kaggle/kaggle.json
+
 # ==================================================================
 # config & cleanup
 # ------------------------------------------------------------------
