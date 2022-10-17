@@ -5,7 +5,6 @@
 # python        3.8    (apt)
 # jupyter       latest (pip)
 # pytorch       latest (pip)
-# tensorflow    latest (pip)
 # jupyterlab    latest (pip)
 # opencv        4.5.4  (git)
 # ==================================================================
@@ -100,12 +99,6 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 # ------------------------------------------------------------------
     $PIP_INSTALL \
         fastai \
-        && \
-# ==================================================================
-# tensorflow
-# ------------------------------------------------------------------
-    $PIP_INSTALL \
-        tensorflow-gpu \
         && \
 # ==================================================================
 # jupyterlab
