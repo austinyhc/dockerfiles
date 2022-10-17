@@ -155,11 +155,8 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         torchbearer \
         watchdog \
         kaggle \
+        nbdev \
         && \
-
-COPY kaggle /.kaggle
-RUN chmod 600 /.kaggle/kaggle.json
-
 # ==================================================================
 # config & cleanup
 # ------------------------------------------------------------------
@@ -167,3 +164,6 @@ RUN chmod 600 /.kaggle/kaggle.json
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+
+COPY kaggle /.kaggle
+RUN chmod 600 /.kaggle/kaggle.json
